@@ -33,3 +33,8 @@
 
 #RUN LSF batch files
 RUN
+
+# Do not include local data files
+data
+bin
+main
