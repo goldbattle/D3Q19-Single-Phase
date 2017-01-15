@@ -216,7 +216,7 @@
 !=======================================================
 ! Create MPI topology
 !=======================================================
-      nprocY = 20 !MPI topology width
+      nprocY = 8 !MPI topology width
       nprocZ = nproc/nprocY !MPI topology height
       if(nprocY > nproc)then
         if(myid == 0)write(*,*)'MPI row count is too large! Stopping'
@@ -274,7 +274,7 @@
       mypzm = mod(indz+nprocZ-1,nprocZ)*nprocY + mod(indy+1,nprocY) !bottom-right corner
       mymzp = mod(indz+1,nprocZ)*nprocY + mod(indy+nprocY-1,nprocY) !top-left corner
       mymzm = mod(indz+nprocZ-1,nprocZ)*nprocY + mod(indy+nprocY-1,nprocY) !bottom-left corner
-	
+
       if(mzp == mzm .OR. myp == mym)then
         if(myid==0)then
           write(*,*)'WARNING: MPI topology is too small!'
@@ -286,10 +286,10 @@
 !=======================================================
 ! Declare reading and writing directories
 !=======================================================
-      dircntdflow0 = trim('/glade/scratch/ngeneva/D3Q19_Channel/')
-      dircntdpart0 = trim('/glade/scratch/ngeneva/D3Q19_Channel/')
+      dircntdflow0 = trim('data/')
+      dircntdpart0 = trim('data/')
 
-      dirgenr = '/glade/scratch/ngeneva/D3Q19_Channel/'
+      dirgenr = 'data/'
       dirdiag = trim(dirgenr)//'diag/'
       dirstat = trim(dirgenr)//'stat/'
       dirprobe = trim(dirgenr)//'probe/'
@@ -531,8 +531,8 @@
       logical dirExist
       character(len=120):: dirPath !Needs to be the same as declared length!
 
-      !inquire( file=trim(DirPath)//'/.', exist=dirExist )  ! Works with gfortran
-      inquire(directory = trim(dirPath), exist = dirExist)  ! Works with ifort (yellowstone)
+      inquire( file=trim(DirPath)//'/.', exist=dirExist )  ! Works with gfortran
+      !inquire(directory = trim(dirPath), exist = dirExist)  ! Works with ifort (yellowstone)
       if(.NOT.dirExist)then
         write(*,*) trim(dirPath)//' not found. Creating...'
         call system('mkdir -p '// trim(dirPath)) !Execute system command to create directory

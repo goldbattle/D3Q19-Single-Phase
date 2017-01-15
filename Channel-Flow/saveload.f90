@@ -5090,7 +5090,7 @@
          zz0 = zpnt - zc
          if(abs(zz0) <= rrbnds) then
 
-         rr0 = dsqrt(xx0*xx0 + yy0*yy0 + zz0*zz0)
+         rr0 = sqrt(xx0*xx0 + yy0*yy0 + zz0*zz0)
 
          if(rr0 <= rrbnds .and. rr0 < rrmin) then
             rrmin = rr0
@@ -5306,7 +5306,7 @@
           zz0 = zpnt - zc
           if(abs(zz0) <= shell2) then
 
-          rr0 = dsqrt(xx0*xx0 + yy0*yy0 + zz0*zz0)
+          rr0 = sqrt(xx0*xx0 + yy0*yy0 + zz0*zz0)
 
           if(rr0 <= shell2 .and. rr0 >= shell1) then
             inct0(ip) = inct0(ip) + 1

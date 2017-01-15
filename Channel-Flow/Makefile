@@ -25,7 +25,7 @@
 # make fullclean: clean + remove main executable
 
 SHELL = /bin/bash
-FFLAG = -O3 -w -r8
+FFLAG = -O3 -w -fdefault-real-8
 FCOMP = mpif90 -c ${FFLAG}
 LINK = mpif90 
 LIBS = -lm
