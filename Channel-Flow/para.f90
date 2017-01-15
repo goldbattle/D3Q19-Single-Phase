@@ -216,7 +216,7 @@
 !=======================================================
 ! Create MPI topology
 !=======================================================
-      nprocY = 8 !MPI topology width
+      nprocY = 20 !MPI topology width
       nprocZ = nproc/nprocY !MPI topology height
       if(nprocY > nproc)then
         if(myid == 0)write(*,*)'MPI row count is too large! Stopping'
