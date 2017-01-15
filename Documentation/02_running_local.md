@@ -20,22 +20,24 @@ dircntdflow0 = trim('data/')
 dircntdpart0 = trim('data/')
 dirgenr = 'data/'
 ```
-* Next the amount of nodes the system can use should be selected (para.f90)
-```
-nprocY = 20 !MPI topology width
-```
-* In this case, we are on a 8 core machine, so 8 will be selected
-```
-nprocY = 8 !MPI topology width
-```
 
+
+## Ensure Local Process Limit
+
+* We are going to want to run a lot of MPI process on a single machine to simulate a server
+* Normally the amount of processes that one user can launch is limited
+* Change the following
+* `sudo nano /etc/security/limits.conf`
+* Append the following to the file (replace <username> with your username)
+* `<username> soft nproc 1000`
+* Restart all terminals so that this takes effect
 
 
 ## Running the Program
 
 * First compile the program with `make`
-* Next lets run it with 8 MPI cores
-* `mpiexec -n 8 ./main`
+* Next lets run it with 100 MPI process
+* `mpiexec -n 100 ./main`
 * This should use all CPU cores on the current system
 * To see nice stats the following can be done
     * `sudo apt-get install sysstat`
